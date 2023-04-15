@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  db-test:
+    image: 'postgres:13.2-alpine'
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=weaklocalpassword
+    ports:
+      - "55322:5432"
+    networks:
+      - test
+    profiles:
+      - test
+
+networks:
+  test:
+    name: "test_network"
