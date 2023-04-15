@@ -1,7 +1,6 @@
 import { Migration } from '@mikro-orm/migrations';
 
-export class Migration20221017190400 extends Migration {
-  /* eslint-disable @typescript-eslint/require-await */
+export class TestMigration extends Migration {
   async up(): Promise<void> {
     const builder = this.getKnex();
 
@@ -72,7 +71,8 @@ export class Migration20221017190400 extends Migration {
   async down(): Promise<void> {
     const builder = this.getKnex();
 
-    this.addSql(builder.schema.dropTable('Orders').toQuery());
     this.addSql(builder.schema.dropTable('Shipments').toQuery());
+    this.addSql(builder.schema.dropTable('LineItems').toQuery());
+    this.addSql(builder.schema.dropTable('Orders').toQuery());
   }
 }
