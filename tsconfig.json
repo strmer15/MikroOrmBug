@@ -17,7 +17,8 @@
     "emitDecoratorMetadata": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "useDefineForClassFields": false
   },
   "include": ["src"],
   "exclude": ["node_modules"]

@@ -76,6 +76,26 @@ async function main(): Promise<void> {
     });
 
     console.log(`Found the order : ${String(order?.id)}`);
+
+    if ((order?.lineItems ?? []).length === 0) {
+      throw new Error('No line items found');
+    }
+
+    console.log({ lineItems: order?.lineItems });
+
+    if ((order?.shipments ?? []).length === 0) {
+      throw new Error('No shipments found');
+    }
+
+    for (const shipment of order?.shipments ?? []) {
+      console.log({ shipment });
+
+      if ((shipment.lineItems ?? []).length === 0) {
+        throw new Error('No shipment line items found');
+      }
+
+      console.log({ shipmentLineItems: shipment.lineItems });
+    }
   } finally {
     await em?.removeAndFlush(em.getReference(Order, 1234));
 
